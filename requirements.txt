@@ -1,2 +1,8 @@
 openpyxl
 pandas
+numpy
+streamlit
+plotly
+statsmodels
+scikit-learn
+geopandas
