@@ -19,8 +19,8 @@ Thumbs.db
 anaconda_projects/
 .virtual_documents/
 
-# Personal Claude Code settings (keep shared settings.json)
-.claude/settings.local.json
+# Claude Code config (tooling only — not part of the project)
+.claude/
 
 # Large, reproducible data (regenerate from NHS source via scripts/etl.py)
 data/raw/*
