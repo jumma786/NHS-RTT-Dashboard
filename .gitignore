@@ -14,3 +14,16 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Anaconda / Jupyter workspace cruft
+anaconda_projects/
+.virtual_documents/
+
+# Personal Claude Code settings (keep shared settings.json)
+.claude/settings.local.json
+
+# Large, reproducible data (regenerate from NHS source via scripts/etl.py)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
