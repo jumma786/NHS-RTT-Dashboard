@@ -92,13 +92,29 @@ def main() -> None:
         icb_frames.append(read_sheet(f, "ICB"))
 
     national = add_pct_52_plus(pd.concat(national_frames, ignore_index=True))
-    icb_stacked = add_pct_52_plus(pd.concat(icb_frames, ignore_index=True))
-    icb = icb_stacked[icb_stacked["ICB Code"] != "-"].copy()
+    icb_all = add_pct_52_plus(pd.concat(icb_frames, ignore_index=True))
 
-    for df in [national, icb_stacked, icb]:
+    # The ICB sheet carries a per-file aggregate row (ICB Code "-", named
+    # "NHS ENGLAND"). That row is NHS England's *direct* (specialised-
+    # commissioning) activity — roughly 127k pathways — NOT the national total.
+    # Drop it for the ICB-level file...
+    icb = icb_all[icb_all["ICB Code"] != "-"].copy()
+
+    for df in [national, icb_all, icb]:
         df["Treatment Function"] = df["Treatment Function"].str.replace(
             r"^Other - ", "", regex=True
         )
+
+    # ...and rebuild the stacked file as ICB rows + a TRUE national row set taken
+    # from the National sheet (the all-England totals, ~7.0M pathways, with the
+    # correct median / 92nd-percentile waits that cannot be recovered by summing
+    # ICBs). Labelled "NHS ENGLAND" / code "-" so the app's national() helper
+    # keeps selecting it unchanged.
+    national_rows = national.copy()
+    national_rows.insert(1, "ICB Code", "-")
+    national_rows.insert(2, "ICB Name", "NHS ENGLAND")
+    national_rows = national_rows[icb.columns]  # align column order
+    icb_stacked = pd.concat([icb, national_rows], ignore_index=True)
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     national.to_csv(OUT_DIR / "rtt_national.csv", index=False)
