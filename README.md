@@ -1,5 +1,7 @@
 # NHS RTT Waiting Times — Analytics
 
+**▶ Live app: https://nhs-rtt-dashboard-zen4ketnck9383sktsgg6h.streamlit.app/**
+
 Data pipeline and interactive **Streamlit** app analysing NHS England Referral to
 Treatment (RTT) waiting times at Integrated Care Board (ICB) level.
 
@@ -100,4 +102,4 @@ The app is ready to deploy from this repo:
 > the offline Excel/Word build scripts stay git-ignored and aren't required to run
 > the app.
 
-**Live app:** _<add the share.streamlit.io URL here once deployed>_
+**Live app:** https://nhs-rtt-dashboard-zen4ketnck9383sktsgg6h.streamlit.app/
