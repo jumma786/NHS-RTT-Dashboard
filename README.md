@@ -11,14 +11,15 @@ and geographic inequality maps.
 
 ## Key Findings (Oct 2022 → Mar 2026)
 
-**The longest waits have been nearly eliminated, but the total list is still ~7M
-and far from the 18-week standard — and where you live changes your odds by 20+
-points.**
+**In plain terms:** about **7 in 10** patients now start treatment within 18 weeks;
+the NHS aims for **about 9 in 10**. The longest waits have been nearly eliminated,
+but the total list is still ~7M and far from the 18-week standard — and where you
+live changes your odds by 20+ points.
 
 | Metric | Oct 2022 | Mar 2026 | Change |
 |--------|---------:|---------:|--------|
 | Incomplete pathways | 6.96M | **7.01M** | broadly flat (peaked at 7.75M, Aug 2023) |
-| Within 18 weeks (target 92%) | 60.2% | **65.3%** | +5.1 pts — still ~27 pts short |
+| Within 18 weeks (target 92%) | 60.2% (≈6 in 10) | **65.3% (≈7 in 10)** | +5.1 pts — still ~27 pts short of 9 in 10 |
 | 52+ week waiters | 384,015 | **92,609** | −76% |
 | 65+ week waiters | 157,216 | **4,302** | −97% |
 | 78+ week waiters | 46,210 | **1,045** | −98% (near-eliminated) |
