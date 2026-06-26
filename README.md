@@ -9,6 +9,31 @@ The app turns 41 months of national waiting-list data into five analytical views
 national trends, specialty breakdowns, long-waiter policy tracking, forecasting,
 and geographic inequality maps.
 
+## Key Findings (Oct 2022 → Mar 2026)
+
+**The longest waits have been nearly eliminated, but the total list is still ~7M
+and far from the 18-week standard — and where you live changes your odds by 20+
+points.**
+
+| Metric | Oct 2022 | Mar 2026 | Change |
+|--------|---------:|---------:|--------|
+| Incomplete pathways | 6.96M | **7.01M** | broadly flat (peaked at 7.75M, Aug 2023) |
+| Within 18 weeks (target 92%) | 60.2% | **65.3%** | +5.1 pts — still ~27 pts short |
+| 52+ week waiters | 384,015 | **92,609** | −76% |
+| 65+ week waiters | 157,216 | **4,302** | −97% |
+| 78+ week waiters | 46,210 | **1,045** | −98% (near-eliminated) |
+| Median wait | 13.9 wks | **11.3 wks** | −2.6 wks |
+
+- **Where the backlog sits** — biggest specialties by volume: Trauma & Orthopaedics
+  (818k), General Medicine (612k), Ophthalmology (602k). Worst 18-week performance:
+  Oral Surgery (56%), Plastic Surgery (57%), ENT (58%).
+- **Geographic inequality** — best ICB Gloucestershire (74.3%) vs worst Mid & South
+  Essex (53.1%): a **21-point gap** for the same national standard.
+
+> The true all-England total is **7.01M** pathways. The ~127k difference from the
+> sum of the 42 ICBs (6.89M) is NHS England's *direct* specialised-commissioning
+> activity, which the National sheet includes and the ICB breakdown does not.
+
 ## Data Source
 
 NHS England RTT waiting times — "Incomplete Commissioner" monthly files, ICB level,
