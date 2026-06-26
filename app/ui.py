@@ -44,3 +44,25 @@ def delta_int(curr, prev) -> str:
         return f"{int(round(float(curr) - float(prev))):+,}"
     except (TypeError, ValueError):
         return ""
+
+
+def download_csv(df, filename: str, label: str = "⬇ Download CSV", key=None) -> None:
+    """Render a Streamlit button that downloads ``df`` as a CSV file.
+
+    ``filename`` is sanitised so spaces and slashes don't break the download.
+    Imported lazily so this module stays usable outside Streamlit.
+    """
+    import re
+
+    import streamlit as st
+
+    safe = re.sub(r"[^A-Za-z0-9._-]+", "_", filename).strip("_") or "data.csv"
+    if not safe.lower().endswith(".csv"):
+        safe += ".csv"
+    st.download_button(
+        label,
+        data=df.to_csv(index=False).encode("utf-8"),
+        file_name=safe,
+        mime="text/csv",
+        key=key,
+    )

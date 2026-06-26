@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 import data as D
-from ui import NHS_BLUE, NHS_RED, fmt_int, fmt_pct
+from ui import NHS_BLUE, NHS_RED, download_csv, fmt_int, fmt_pct
 
 st.set_page_config(page_title="Specialties · NHS RTT", page_icon="🩺", layout="wide")
 st.title("🩺 Specialties")
@@ -40,6 +40,7 @@ fig2.update_layout(height=560, margin=dict(t=10, l=10),
 c2.plotly_chart(fig2, use_container_width=True)
 
 st.caption(f"National figures for {month}. Bars in red are below the 92% standard.")
+download_csv(brk.drop(columns=["spec"]).reset_index(drop=True), f"rtt_specialties_{month}")
 
 # ---- Trend of the worst specialties over time ----------------------------
 st.subheader("Trend: % within 18 weeks for the lowest-performing specialties")

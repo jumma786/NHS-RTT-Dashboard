@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 import data as D
-from ui import NHS_BLUE, NHS_RED, fmt_int, fmt_pct, fmt_weeks
+from ui import NHS_BLUE, NHS_RED, download_csv, fmt_int, fmt_pct, fmt_weeks
 
 st.set_page_config(page_title="Overview · NHS RTT", page_icon="📈", layout="wide")
 st.title("📈 Overview")
@@ -76,4 +76,6 @@ st.plotly_chart(fig3, use_container_width=True)
 
 with st.expander("Show data table"):
     cols = [D.PERIOD, D.INCOMPLETE, D.WITHIN18, D.PCT18, D.MEDIAN, D.P92, D.W52, D.W65, D.W78]
-    st.dataframe(series[cols].reset_index(drop=True), use_container_width=True, hide_index=True)
+    table = series[cols].reset_index(drop=True)
+    st.dataframe(table, use_container_width=True, hide_index=True)
+    download_csv(table, f"rtt_overview_{scope_label}_{specialty}")

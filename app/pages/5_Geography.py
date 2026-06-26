@@ -8,7 +8,7 @@ import streamlit as st
 
 import data as D
 import geo as G
-from ui import NHS_BLUE, fmt_int, fmt_pct
+from ui import NHS_BLUE, download_csv, fmt_int, fmt_pct
 
 st.set_page_config(page_title="Geography · NHS RTT", page_icon="🗺️", layout="wide")
 st.title("🗺️ Geography & regional inequality")
@@ -54,6 +54,10 @@ b1.dataframe(ranked.head(5)[["ICB Short", col]].rename(columns={"ICB Short": "IC
 b2.markdown("**Best 5**")
 b2.dataframe(ranked.tail(5)[::-1][["ICB Short", col]].rename(columns={"ICB Short": "ICB", col: metric_label}),
              hide_index=True, use_container_width=True)
+
+dl = ranked[["ICB Short", D.INCOMPLETE, D.WITHIN18, D.PCT18, D.MEDIAN, D.W52, D.W65, D.W78]].rename(
+    columns={"ICB Short": "ICB"}).reset_index(drop=True)
+download_csv(dl, f"rtt_geography_by_icb_{month}")
 
 # ---- Inequality over time (is the gap widening?) --------------------------
 st.subheader("Is regional inequality widening or narrowing?")

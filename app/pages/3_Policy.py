@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 import data as D
-from ui import NHS_AMBER, NHS_RED, fmt_int
+from ui import NHS_AMBER, NHS_RED, download_csv, fmt_int
 
 st.set_page_config(page_title="Policy · NHS RTT", page_icon="🎯", layout="wide")
 st.title("🎯 Long-waiter policy tracking")
@@ -60,6 +60,7 @@ show = snap[["ICB Short", D.INCOMPLETE, D.W52, D.W65, D.W78, "52+ per 10k list"]
 st.dataframe(show, use_container_width=True, hide_index=True,
              column_config={c: st.column_config.NumberColumn(format="%d")
                             for c in ["Incomplete", "52+", "65+", "78+", "52+ per 10k list"]})
+download_csv(show, f"rtt_policy_league_table_{D.latest_month()}")
 
 n_with_78 = int((snap[D.W78] > 0).sum())
 st.caption(f"{n_with_78} of {len(snap)} ICBs still report 78+ week waiters in {D.latest_month()}. "
