@@ -27,3 +27,7 @@ data/raw/*
 !data/raw/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
+# ...except the one file the Streamlit app reads — committed so the deployed
+# app (Streamlit Community Cloud) has data. The other two CSVs are only used by
+# the offline Excel/Word build scripts and stay git-ignored.
+!data/processed/rtt_icb_stacked.csv

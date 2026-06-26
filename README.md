@@ -82,4 +82,22 @@ Produces three tidy files:
 ## Requirements
 
 Python 3.10+. Key packages (see `requirements.txt`): `pandas`, `numpy`, `streamlit`,
-`plotly`, `statsmodels`, `scikit-learn`, `geopandas`, `openpyxl`.
+`plotly`, `statsmodels`, `scikit-learn`, `openpyxl`.
+
+## Deploy (Streamlit Community Cloud)
+
+The app is ready to deploy from this repo:
+
+1. Push to GitHub (the app reads `data/processed/rtt_icb_stacked.csv` and
+   `data/geo/icb.geojson`, both of which are committed).
+2. On [share.streamlit.io](https://share.streamlit.io), click **New app** and point it at:
+   - **Repository:** `jumma786/NHS-RTT-Dashboard`
+   - **Branch:** `master`
+   - **Main file path:** `app/streamlit_app.py`
+3. Deploy. Streamlit installs `requirements.txt` and reads `.streamlit/config.toml`.
+
+> Only the one stacked CSV the app needs is committed; the two larger CSVs used by
+> the offline Excel/Word build scripts stay git-ignored and aren't required to run
+> the app.
+
+**Live app:** _<add the share.streamlit.io URL here once deployed>_

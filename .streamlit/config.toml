@@ -1,0 +1,12 @@
+[theme]
+primaryColor = "#005EB8"          # NHS Blue
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F0F4F5"
+textColor = "#212B32"
+font = "sans serif"
+
+[server]
+headless = true
+
+[browser]
+gatherUsageStats = false
