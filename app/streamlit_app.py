@@ -7,7 +7,7 @@ from __future__ import annotations
 import streamlit as st
 
 import data as D
-from ui import fmt_int, fmt_pct, fmt_weeks
+from ui import fmt_int, fmt_pct, fmt_weeks, glossary, plain_ratio
 
 st.set_page_config(
     page_title="NHS RTT Analytics",
@@ -18,9 +18,11 @@ st.set_page_config(
 
 st.title("🏥 NHS RTT Waiting Times — Analytics")
 st.caption(
-    "Referral to Treatment (incomplete pathways) at Integrated Care Board level, "
-    f"{D.months()[0]} to {D.latest_month()} ({len(D.months())} months)."
+    "How long people wait to start hospital treatment in England, by local NHS "
+    f"area, {D.months()[0]} to {D.latest_month()} ({len(D.months())} months). "
+    "\"Incomplete pathways\" = people currently on the waiting list."
 )
+glossary()
 
 nat = D.national()  # national 'Total' specialty series
 latest = nat.iloc[-1]
@@ -48,9 +50,9 @@ c4.metric("Median wait", fmt_weeks(latest[D.MEDIAN]))
 
 gap = (D.TARGET_PCT18 - latest[D.PCT18]) * 100
 st.info(
-    f"**18-week standard:** the operational target is **92%** within 18 weeks. "
-    f"Latest national performance is **{fmt_pct(latest[D.PCT18])}** — "
-    f"**{gap:.1f} percentage points** below target."
+    f"**In plain terms:** {plain_ratio(latest[D.PCT18])} patients start treatment "
+    f"within 18 weeks ({fmt_pct(latest[D.PCT18])}). The NHS aims for **about 9 in 10** "
+    f"(the 92% standard) — so we're **{gap:.1f} percentage points** short."
 )
 
 st.markdown(

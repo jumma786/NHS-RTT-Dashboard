@@ -8,12 +8,13 @@ import streamlit as st
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 
 import data as D
-from ui import NHS_BLUE, NHS_RED
+from ui import NHS_BLUE, NHS_RED, glossary
 
 st.set_page_config(page_title="Forecast · NHS RTT", page_icon="🔮", layout="wide")
 st.title("🔮 Forecast")
-st.caption("Indicative projection using Holt's exponential smoothing (trend). "
+st.caption("A simple projection of where waits might head if recent trends continue. "
            "Not an official NHS forecast — for exploratory analysis only.")
+glossary()
 
 METRIC_CHOICES = {
     "% within 18 weeks": D.PCT18,

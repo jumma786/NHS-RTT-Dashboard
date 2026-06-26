@@ -8,10 +8,12 @@ import streamlit as st
 
 import data as D
 import geo as G
-from ui import NHS_BLUE, download_csv, fmt_int, fmt_pct
+from ui import NHS_BLUE, download_csv, fmt_int, fmt_pct, glossary
 
 st.set_page_config(page_title="Geography · NHS RTT", page_icon="🗺️", layout="wide")
 st.title("🗺️ Geography & regional inequality")
+st.caption("How waits differ across the country. Find your local NHS area on the map below.")
+glossary()
 
 METRICS = {
     "% within 18 weeks": (D.PCT18, "RdYlGn", "%", 100),
@@ -39,9 +41,9 @@ fig.update_geos(fitbounds="locations", visible=False)
 fig.update_layout(height=620, margin=dict(t=10, b=10, l=10, r=10),
                   coloraxis_colorbar_title=metric_label.replace(" ", "<br>"))
 st.plotly_chart(fig, use_container_width=True)
-st.caption(f"All-specialty figures by ICB, {month}. "
-           + ("Greener = better (closer to the 92% standard)." if col == D.PCT18
-              else "Darker = higher / worse."))
+st.caption(f"All-specialty figures by local NHS area (ICB), {month}. "
+           + ("Greener = better (more patients seen on time); redder = worse." if col == D.PCT18
+              else "Darker = higher numbers / longer waits (worse)."))
 
 # ---- Best / worst -----------------------------------------------------------
 asc = col == D.PCT18  # for %18wk, lowest is worst

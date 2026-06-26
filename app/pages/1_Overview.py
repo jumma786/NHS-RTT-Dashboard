@@ -5,10 +5,12 @@ import plotly.graph_objects as go
 import streamlit as st
 
 import data as D
-from ui import NHS_BLUE, NHS_RED, download_csv, fmt_int, fmt_pct, fmt_weeks
+from ui import NHS_BLUE, NHS_RED, download_csv, fmt_int, fmt_pct, fmt_weeks, glossary
 
 st.set_page_config(page_title="Overview · NHS RTT", page_icon="📈", layout="wide")
 st.title("📈 Overview")
+st.caption("Pick an area and a type of treatment to see how waits have changed over time.")
+glossary()
 
 # ---- Controls -------------------------------------------------------------
 icb_df = D.icbs()

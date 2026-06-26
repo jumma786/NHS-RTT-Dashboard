@@ -5,10 +5,12 @@ import plotly.graph_objects as go
 import streamlit as st
 
 import data as D
-from ui import NHS_AMBER, NHS_RED, download_csv, fmt_int
+from ui import NHS_AMBER, NHS_RED, download_csv, fmt_int, glossary
 
 st.set_page_config(page_title="Policy · NHS RTT", page_icon="🎯", layout="wide")
 st.title("🎯 Long-waiter policy tracking")
+st.caption("Tracking the longest waits (over a year, 15 months, 18 months) the NHS has pledged to end.")
+glossary()
 
 st.markdown(
     "NHS England set successive targets to eliminate the longest waits. This page "

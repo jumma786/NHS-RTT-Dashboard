@@ -6,10 +6,12 @@ import plotly.graph_objects as go
 import streamlit as st
 
 import data as D
-from ui import NHS_BLUE, NHS_RED, download_csv, fmt_int, fmt_pct
+from ui import NHS_BLUE, NHS_RED, download_csv, fmt_int, fmt_pct, glossary
 
 st.set_page_config(page_title="Specialties · NHS RTT", page_icon="🩺", layout="wide")
 st.title("🩺 Specialties")
+st.caption("Which areas of treatment (e.g. hip/knee surgery, eye care) have the most people waiting.")
+glossary()
 
 month = st.select_slider("Month", options=D.months(), value=D.latest_month())
 
